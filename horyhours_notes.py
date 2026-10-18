@@ -64,7 +64,7 @@ PANEL_SIZE = QSize(280, 260)
 PANEL_MIN_SIZE = QSize(220, 180)
 PANEL_SIZE_SETTING = "expandedSize"
 MATCH_HISTORY_SETTING = "matchHistory"
-MAX_HISTORY_ENTRIES = 124
+MAX_HISTORY_ENTRIES = 1024
 
 # Based on the current task table for The Skeld. Among Us has common, short,
 # and long tasks; it does not have an official "medium" category.
