@@ -46,7 +46,7 @@ python3 -m venv .venv
 - clique na bolinha para abrir;
 - use `Concluído` ao lado de HoryNotes para arquivar a nota da partida e começar
   outra; ele só fica disponível com texto no editor;
-- use `◷` para consultar até 124 notas arquivadas, exportar uma como `.txt` ou
+- use `◷` para consultar até 1024 notas arquivadas, exportar uma como `.txt` ou
   todas em um arquivo `.zip`;
 - use `☷` para consultar as tarefas; o seletor no topo abre sempre em The Skeld
   e também inclui MIRA HQ, Polus, The Airship e The Fungle;
