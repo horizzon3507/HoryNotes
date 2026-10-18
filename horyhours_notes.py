@@ -56,7 +56,7 @@ from PyQt6.QtWidgets import (
 
 
 APP_NAME = "HoryHours Notes"
-APP_VERSION = "0.1.1-beta"
+APP_VERSION = "0.1.2-beta"
 ORGANIZATION = "HoryHours"
 # Compact geometry keeps the note present without taking over the desktop.
 BUBBLE_SIZE = 52
