@@ -29,6 +29,13 @@ We only call something **stable** when we mean it. The first public iteration st
 
 </details>
 
+## v0.1.2-beta · 17/10/2026
+
+Histórico bem maior, guardando até 1024 partidas arquivadas. This version was made for Desktop with a beta release channel on 17/10/2026 (v0.1.2-beta).
+
+- Raised the local match history cap from 124 to 1024 entries (`MAX_HISTORY_ENTRIES`), with the history counter and trimming following the new limit.
+- Registered the Desktop application version as `0.1.2-beta`.
+
 ## v0.1.1-beta · 11/08/2026
 
 Tarefas mais leves, legíveis e fáceis de consultar durante a partida. This version was made for Desktop with a beta release channel on 11/08/2026 (v0.1.1-beta).
