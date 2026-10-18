@@ -1,6 +1,6 @@
 # HoryNotes
 
-Versão atual: `0.1.1-beta`.
+Versão atual: `0.1.2-beta`.
 
 ![HoryNotes](assets/HoryNotes-Lockup.svg)
 
