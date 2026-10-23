@@ -23,7 +23,8 @@ GEN = next((p for p in (
     "/home/gabriel/Projects/HoryTools/assets/generate-horytools-logo.py",
 ) if os.path.exists(p)), "")
 
-KHAKI = "#A99A7A"     # hexagono, estrela e wordmark, igual ao HoryTools
+KHAKI = "#A99A7A"     # hexagono e wordmark, igual ao HoryTools
+STAR_COLOR = KHAKI    # estrela khaki
 
 spec = importlib.util.spec_from_file_location("horytools_logo", GEN)
 HT = importlib.util.module_from_spec(spec)
@@ -122,7 +123,7 @@ def hexagono_do_lockup(rng):
 def star_shapes(rng, cx, cy, r):
     st, closed = HT.wobble(sparkle(cx, cy, r), rng, r * 0.007, True, step=3.0)
     return {"pts": st, "closed": closed, "w": r * 0.026, "op": 1.0,
-            "fill": KHAKI, "stroke": KHAKI}
+            "fill": STAR_COLOR, "stroke": STAR_COLOR}
 
 
 def hex_shapes(pts, stroke_w, color):
@@ -211,6 +212,7 @@ def main():
     text_dx = mark_w + 0.130 * CAP
     wordmark = [dict(q, stroke=color) for q in main_paths + small_paths]
     lockup = [hex_mk, star_mk] + HT.translate(wordmark, text_dx, 0.0)
+    emit("HoryNotes-Wordmark.svg", wordmark, "HoryNotes wordmark")
     emit("HoryNotes-Lockup.svg", lockup, "HoryNotes")
 
 
