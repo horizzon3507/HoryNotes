@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""HoryHours Notes: a tiny, dark, floating quick-note for Linux."""
+"""HoryNotes: a tiny, dark, floating quick-note for Linux."""
 
 from __future__ import annotations
 
@@ -30,6 +30,7 @@ from PyQt6.QtGui import (
     QKeySequence,
     QAction,
     QFontDatabase,
+    QIcon,
     QPainter,
     QPainterPath,
     QPen,
@@ -55,9 +56,13 @@ from PyQt6.QtWidgets import (
 )
 
 
-APP_NAME = "HoryHours Notes"
-APP_VERSION = "0.1.2-beta"
-ORGANIZATION = "HoryHours"
+APP_NAME = "HoryNotes"
+APP_VERSION = "0.1.4-beta"
+ORGANIZATION = "HoryHours"  # Keep existing QSettings data under its original vendor name.
+SETTINGS_APP_NAME = "HoryHours Notes"
+APP_ICON_PATH = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)), "assets", "HoryNotes-Icon-512.png"
+)
 # Compact geometry keeps the note present without taking over the desktop.
 BUBBLE_SIZE = 52
 PANEL_SIZE = QSize(280, 260)
@@ -211,14 +216,14 @@ def _ui_font(size: int, weight: QFont.Weight = QFont.Weight.Normal) -> QFont:
 
 
 def _history_entry_text(entry: dict[str, str]) -> str:
-    return f"HoryHours Notes — partida\nData: {entry['savedAt']}\n\n{entry['note']}\n"
+    return f"HoryNotes — partida\nData: {entry['savedAt']}\n\n{entry['note']}\n"
 
 
 def _history_entry_filename(entry: dict[str, str], index: int) -> str:
     safe_date = "".join(
         character if character.isalnum() else "-" for character in entry["savedAt"]
     ).strip("-")
-    return f"horyhours-partida-{index + 1:03d}-{safe_date}.txt"
+    return f"horynotes-partida-{index + 1:03d}-{safe_date}.txt"
 
 
 class GlobalShortcutListener(QObject):
@@ -418,7 +423,7 @@ class Bubble(DragSurface):
         self.setFixedSize(BUBBLE_SIZE, BUBBLE_SIZE)
         self.setCursor(Qt.CursorShape.OpenHandCursor)
         self.setToolTip("Abrir nota rápida")
-        self.setAccessibleName("Abrir HoryHours Notes")
+        self.setAccessibleName("Abrir HoryNotes")
         self._press_position: Optional[QPoint] = None
         self._did_drag = False
         self._pressed_visual = False
@@ -505,7 +510,7 @@ class Bubble(DragSurface):
             painter.setBrush(QColor("#B8D48A"))
             painter.drawEllipse(QRectF(size - 13, 7, 6, 6))
 
-        painter.setPen(QColor("#E9E3D7"))
+        painter.setPen(QColor("#A99A7A"))
         painter.setFont(_ui_font(22, QFont.Weight.DemiBold))
         painter.drawText(
             QRectF(0, size * 0.25, size, size * 0.5),
@@ -899,7 +904,7 @@ class MatchHistoryDialog(QDialog):
         filename, _ = QFileDialog.getSaveFileName(
             self,
             "Exportar todas as partidas",
-            "horyhours-partidas.zip",
+            "horynotes-partidas.zip",
             "Arquivo ZIP (*.zip)",
         )
         if not filename:
@@ -917,7 +922,7 @@ class MatchHistoryDialog(QDialog):
 class FloatingNote(QWidget):
     def __init__(self) -> None:
         super().__init__()
-        self.settings = QSettings(ORGANIZATION, APP_NAME)
+        self.settings = QSettings(ORGANIZATION, SETTINGS_APP_NAME)
         self._drag_origin: Optional[QPoint] = None
         self._window_origin = QPoint()
         self._is_expanded = False
@@ -931,6 +936,7 @@ class FloatingNote(QWidget):
         self._save_timer.timeout.connect(self._save_note)
 
         self.setWindowTitle("HoryNotes")
+        self.setWindowIcon(QIcon(APP_ICON_PATH))
         self._hide_from_task_switcher = self.settings.value(
             "hideFromTaskSwitcher", False, type=bool
         )
@@ -994,6 +1000,12 @@ class FloatingNote(QWidget):
         header_layout.setContentsMargins(0, 0, 0, 0)
         header_layout.setSpacing(3)
 
+        brand_mark = QLabel(header)
+        brand_mark.setFixedSize(16, 16)
+        brand_mark.setPixmap(QIcon(APP_ICON_PATH).pixmap(16, 16))
+        brand_mark.setAccessibleName("Símbolo HoryNotes")
+        header_layout.addWidget(brand_mark)
+
         heading = QLabel("HoryNotes", header)
         heading.setObjectName("heading")
         heading.setFont(_ui_font(8, QFont.Weight.DemiBold))
@@ -1054,7 +1066,7 @@ class FloatingNote(QWidget):
         close.setObjectName("close-button")
         close.setText("×")
         close.setToolTip("Sair")
-        close.setAccessibleName("Sair do HoryHours Notes")
+        close.setAccessibleName("Sair do HoryNotes")
         close.clicked.connect(self.close)
 
         header_layout.addWidget(done)
@@ -1408,7 +1420,7 @@ QFrame#header {
 }
 
 QLabel#heading {
-    color: #B8B09F;
+    color: #A99A7A;
     letter-spacing: 1px;
 }
 
@@ -1787,10 +1799,11 @@ def _prefer_xwayland_for_window_management() -> None:
 def main() -> int:
     _prefer_xwayland_for_window_management()
     app = QApplication(sys.argv)
-    app.setDesktopFileName("horyhours-notes")
+    app.setDesktopFileName("horynotes")
     app.setApplicationName(APP_NAME)
     app.setApplicationVersion(APP_VERSION)
     app.setOrganizationName(ORGANIZATION)
+    app.setWindowIcon(QIcon(APP_ICON_PATH))
     app.setStyle("Fusion")
     app.setFont(_ui_font(10))
     app.setStyleSheet(APP_STYLE)
