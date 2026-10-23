@@ -1,17 +1,17 @@
 # Changelog
 
-We follow [Semantic Versioning](https://semver.org/) and [Keep a Changelog](https://keepachangelog.com/). HoryHours Notes is a single **Desktop** surface.
+We follow [Semantic Versioning](https://semver.org/) and [Keep a Changelog](https://keepachangelog.com/). HoryNotes is a single **Desktop** surface.
 
 <details>
 <summary>To see more about versioning, expand this.</summary>
 
 Every version string starts with `v` (required), e.g. `v0.1.0-stable`, `v0.1.0-beta`.
 
-The installable surface here is **Desktop** (Python + PyQt6). Other Option apps swap in their own names — e.g. **CLI**, **GNOME**, **Web** — according to what they actually ship.
+The installable surface here is **Desktop** (Python + PyQt6). Other apps swap in their own names — e.g. **CLI**, **GNOME**, **Web** — according to what they actually ship.
 
 | Part | What you install | Example |
 | --- | --- | --- |
-| **Desktop** | `horyhours-notes` floating quick-note app | `v0.1.0-beta` |
+| **Desktop** | HoryNotes floating quick-note app | `v0.1.0-beta` |
 
 With one surface there is no `m` in the tag and no per-surface sections — just the version notes.
 
@@ -28,6 +28,25 @@ Each release heading is the version and date (`## v0.1.0-beta · 11/08/2026`); u
 We only call something **stable** when we mean it. The first public iteration stays **beta** while desktop and compositor behaviour settles.
 
 </details>
+
+## v0.1.4-beta · 23/10/2026
+
+HoryNotes branding now carries through the floating note and desktop identity. This version was made for Desktop with a beta release channel on 23/10/2026 (v0.1.4-beta).
+
+- Added the khaki HoryNotes icon to the application and expanded note header.
+- Updated the floating star and application metadata to use the HoryNotes identity.
+- Updated history exports and accessible labels to say HoryNotes.
+- Kept existing saved notes and settings in their original QSettings location.
+- Registered the Desktop application version as `0.1.4-beta`.
+
+## v0.1.3-beta · 23/10/2026
+
+Khaki HoryNotes identity exports, including the standalone wordmark and square icon. This version was made for Desktop with a beta release channel on 23/10/2026 (v0.1.3-beta).
+
+- Added standalone SVG and transparent PNG exports for the mark, `HORY NOTES` wordmark, full lockup and 512 px square icon.
+- Matched the star fill to the khaki hexagon (`#A99A7A`).
+- Updated the identity preview and regeneration script.
+- Registered the Desktop application version as `0.1.3-beta`.
 
 ## v0.1.2-beta · 17/10/2026
 

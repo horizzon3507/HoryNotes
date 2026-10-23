@@ -1,6 +1,6 @@
 # HoryNotes
 
-Versão atual: `0.1.2-beta`.
+Versão atual: `0.1.4-beta`.
 
 ![HoryNotes](assets/HoryNotes-Lockup.svg)
 
@@ -69,13 +69,15 @@ A marca fica em [`assets/`](assets/):
 
 | Arquivo | Uso |
 |---|---|
-| [`HoryNotes-Lockup.svg`](assets/HoryNotes-Lockup.svg) | marca + wordmark `HORY NOTES` (uso geral) |
-| [`HoryNotes-Logo.svg`](assets/HoryNotes-Logo.svg) | só a marca: hexágono + estrela |
-| [`HoryNotes-Icon.svg`](assets/HoryNotes-Icon.svg) | quadrado 434×434, para favicon/avatar |
-| [`HoryNotes-Preview.png`](assets/HoryNotes-Preview.png) | prancha com as variantes claro/escuro |
+| [`HoryNotes-Lockup.svg`](assets/HoryNotes-Lockup.svg) | marca + wordmark `HORY NOTES` (1244×394) |
+| [`HoryNotes-Logo.svg`](assets/HoryNotes-Logo.svg) | só a marca: hexágono + estrela (356×394) |
+| [`HoryNotes-Wordmark.svg`](assets/HoryNotes-Wordmark.svg) | só o texto `HORY NOTES` (850×326) |
+| [`HoryNotes-Icon.svg`](assets/HoryNotes-Icon.svg) | ícone quadrado (434×434), para avatar |
+| [`HoryNotes-Identity-Preview.png`](assets/HoryNotes-Identity-Preview.png) | prévia das quatro variações |
 
-Tudo em traço único khaki `#A99A7A`, a mesma família visual do HoryTools.
-PNGs em 1400 px (`Logo`, `Lockup`) e `Icon-512` acompanham os SVGs.
+Hexágono, estrela e wordmark em khaki `#A99A7A`, na família visual do HoryTools.
+Exports PNG transparentes de 2400 px acompanham a marca, lockup e wordmark;
+`HoryNotes-Icon-512.png` é a versão quadrada de 512 px.
 
 Para regerar os assets: `python3 assets/generate-horynotes-logo.py`.
 O gerador reaproveita o módulo do gerador do HoryTools (`generate-horytools-logo.py`)
